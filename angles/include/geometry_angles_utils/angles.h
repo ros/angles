@@ -32,8 +32,8 @@
 *  POSSIBILITY OF SUCH DAMAGE.
 *********************************************************************/
 
-#ifndef ANGLES_H
-#define ANGLES_H
+#ifndef GEOMETRY_ANGLES_UTILS_H
+#define GEOMETRY_ANGLES_UTILS_H
 
 #include <algorithm>
 #include <cmath>
