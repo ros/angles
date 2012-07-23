@@ -37,7 +37,6 @@
 
 #include <algorithm>
 #include <cmath>
-#include <stdio.h>
 
 namespace angles
 {
