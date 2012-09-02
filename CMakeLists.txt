@@ -4,6 +4,4 @@ project(geometry_angles_utils)
 find_package(catkin REQUIRED)
 catkin_stack()
 
-catkin_project(${PROJECT_NAME} INCLUDE_DIRS angles/include)
-
 add_subdirectory(angles)
