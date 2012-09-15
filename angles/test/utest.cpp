@@ -1,4 +1,4 @@
-#include "geometry_angles_utils/angles.h"
+#include "angles/angles.h"
 #include <gtest/gtest.h>
 
 using namespace angles;

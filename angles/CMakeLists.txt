@@ -1,3 +1,4 @@
+project(angles)
 catkin_project(${PROJECT_NAME} INCLUDE_DIRS include)
 
 install(DIRECTORY include/
