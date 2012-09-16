@@ -1,6 +1,6 @@
 <stack>
   <name>geometry_angles_utils</name>
-  <version>1.9.4</version>
+  <version>1.9.5</version>
   <description>This package provides a set of simple math utilities to work
         with angles. The utilities cover simple things like
         normalizing an angle and conversion between degrees and
