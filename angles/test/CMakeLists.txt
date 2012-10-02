@@ -1,2 +1,2 @@
-add_gtest(utest utest.cpp)
+catkin_add_gtest(utest utest.cpp)
 

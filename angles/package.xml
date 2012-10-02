@@ -1,5 +1,5 @@
-<stack>
-  <name>geometry_angles_utils</name>
+<package>
+  <name>angles</name>
   <version>1.9.5</version>
   <description>This package provides a set of simple math utilities to work
         with angles. The utilities cover simple things like
@@ -16,5 +16,6 @@
   <copyright>Willow Garage</copyright>
 
   <url>http://ros.org/wiki/angles</url>
+
   <build_depends>catkin</build_depends>
-</stack>
+</package>

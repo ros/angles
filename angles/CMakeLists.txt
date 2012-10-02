@@ -1,13 +1,13 @@
+cmake_minimum_required(VERSION 2.8)
 project(angles)
-catkin_project(${PROJECT_NAME} INCLUDE_DIRS include)
 
-install(DIRECTORY include/
-        DESTINATION include
+find_package(catkin REQUIRED)
+catkin_package(INCLUDE_DIRS include)
+
+install(DIRECTORY include/${PROJECT_NAME}/
+        DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
         FILES_MATCHING PATTERN "*.h")
 
 include_directories(include)
 
-option(BUILD_TEST "Build tests" ON)
-if(BUILD_TEST)
-  add_subdirectory(test)
-endif()
+add_subdirectory(test)
