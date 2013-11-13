@@ -101,14 +101,7 @@ namespace angles
     
   static inline double shortest_angular_distance(double from, double to)
   {
-    double result = normalize_angle_positive(normalize_angle_positive(to) - normalize_angle_positive(from));
-	
-    if (result > M_PI)
-      // If the result > 180,
-      // It's shorter the other way.
-      result = -(2.0*M_PI - result);
-	
-    return normalize_angle(result);
+    return normalize_angle(to-from);
   }
 
   /*!
