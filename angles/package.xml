@@ -17,4 +17,8 @@
   <url>http://ros.org/wiki/angles</url>
 
   <buildtool_depend version_gte="0.5.68">catkin</buildtool_depend>
+
+  <export>
+    <architecture_independent/>
+  </export>
 </package>
