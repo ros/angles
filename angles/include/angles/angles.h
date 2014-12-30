@@ -1,13 +1,13 @@
 /*********************************************************************
 * Software License Agreement (BSD License)
-* 
+*
 *  Copyright (c) 2008, Willow Garage, Inc.
 *  All rights reserved.
-* 
+*
 *  Redistribution and use in source and binary forms, with or without
 *  modification, are permitted provided that the following conditions
 *  are met:
-* 
+*
 *   * Redistributions of source code must retain the above copyright
 *     notice, this list of conditions and the following disclaimer.
 *   * Redistributions in binary form must reproduce the above
@@ -17,7 +17,7 @@
 *   * Neither the name of the Willow Garage nor the names of its
 *     contributors may be used to endorse or promote products derived
 *     from this software without specific prior written permission.
-* 
+*
 *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 *  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
@@ -40,24 +40,24 @@
 
 namespace angles
 {
-    
+
   /*!
    * \brief Convert degrees to radians
    */
-    
+
   static inline double from_degrees(double degrees)
   {
-    return degrees * M_PI / 180.0;   
+    return degrees * M_PI / 180.0;
   }
-    
+
   /*!
-   * \brief Convert radians to degrees 
+   * \brief Convert radians to degrees
    */
   static inline double to_degrees(double radians)
   {
     return radians * 180.0 / M_PI;
   }
-    
+
 
   /*!
    * \brief normalize_angle_positive
@@ -77,7 +77,7 @@ namespace angles
    * Normalizes the angle to be -M_PI circle to +M_PI circle
    * It takes and returns radians.
    *
-   */    
+   */
   static inline double normalize_angle(double angle)
   {
     double a = normalize_angle_positive(angle);
@@ -86,7 +86,7 @@ namespace angles
     return a;
   }
 
-    
+
   /*!
    * \function
    * \brief shortest_angular_distance
@@ -98,7 +98,7 @@ namespace angles
    * would always be -pi <= result <= pi.  Adding the result
    * to "from" will always get you an equivelent angle to "to".
    */
-    
+
   static inline double shortest_angular_distance(double from, double to)
   {
     return normalize_angle(to-from);
@@ -107,8 +107,8 @@ namespace angles
   /*!
    * \function
    *
-   * \brief returns the angle in [-2*M_PI, 2*M_PI]  going the other way along the unit circle. 
-   * \param angle The angle to which you want to turn in the range [-2*M_PI, 2*M_PI] 
+   * \brief returns the angle in [-2*M_PI, 2*M_PI]  going the other way along the unit circle.
+   * \param angle The angle to which you want to turn in the range [-2*M_PI, 2*M_PI]
    * E.g. two_pi_complement(-M_PI/4) returns 7_M_PI/4
    * two_pi_complement(M_PI/4) returns -7*M_PI/4
    *
@@ -117,7 +117,7 @@ namespace angles
   {
     //check input conditions
     if (angle > 2*M_PI || angle < -2.0*M_PI)
-      angle = fmod(angle, 2.0*M_PI);    
+      angle = fmod(angle, 2.0*M_PI);
     if(angle < 0)
       return (2*M_PI+angle);
     else if (angle > 0)
@@ -126,14 +126,14 @@ namespace angles
     return(2*M_PI);
   }
 
-  /*! 
+  /*!
    * \function
    *
-   * \brief This function is only intended for internal use and not intended for external use. If you do use it, read the documentation very carefully. Returns the min and max amount (in radians) that can be moved from "from" angle to "left_limit" and "right_limit". 
+   * \brief This function is only intended for internal use and not intended for external use. If you do use it, read the documentation very carefully. Returns the min and max amount (in radians) that can be moved from "from" angle to "left_limit" and "right_limit".
    * \return returns false if "from" angle does not lie in the interval [left_limit,right_limit]
    * \param from - "from" angle - must lie in [-M_PI, M_PI)
    * \param left_limit - left limit of valid interval for angular position - must lie in [-M_PI, M_PI], left and right limits are specified on the unit circle w.r.t to a reference pointing inwards
-   * \param right_limit - right limit of valid interval for angular position - must lie in [-M_PI, M_PI], left and right limits are specified on the unit circle w.r.t to a reference pointing inwards 
+   * \param right_limit - right limit of valid interval for angular position - must lie in [-M_PI, M_PI], left and right limits are specified on the unit circle w.r.t to a reference pointing inwards
    * \param result_min_delta - minimum (delta) angle (in radians) that can be moved from "from" position before hitting the joint stop
    * \param result_max_delta - maximum (delta) angle (in radians) that can be movedd from "from" position before hitting the joint stop
    */
@@ -196,12 +196,12 @@ namespace angles
 
 
   /*!
-   * \function 
+   * \function
    *
    * \brief Returns the delta from "from_angle" to "to_angle" making sure it does not violate limits specified by left_limit and right_limit.
-   * The valid interval of angular positions is [left_limit,right_limit]. E.g., [-0.25,0.25] is a 0.5 radians wide interval that contains 0. 
-   * But [0.25,-0.25] is a 2*M_PI-0.5 wide interval that contains M_PI (but not 0). 
-   * The value of shortest_angle is the angular difference between "from" and "to" that lies within the defined valid interval. 
+   * The valid interval of angular positions is [left_limit,right_limit]. E.g., [-0.25,0.25] is a 0.5 radians wide interval that contains 0.
+   * But [0.25,-0.25] is a 2*M_PI-0.5 wide interval that contains M_PI (but not 0).
+   * The value of shortest_angle is the angular difference between "from" and "to" that lies within the defined valid interval.
    * E.g. shortest_angular_distance_with_limits(-0.5,0.5,0.25,-0.25,ss) evaluates ss to 2*M_PI-1.0 and returns true while
    * shortest_angular_distance_with_limits(-0.5,0.5,-0.25,0.25,ss) returns false since -0.5 and 0.5 do not lie in the interval [-0.25,0.25]
    *
@@ -274,11 +274,6 @@ namespace angles
     shortest_angle = delta;
     return false;
   }
-
-
-    
-
-
 }
 
 #endif
