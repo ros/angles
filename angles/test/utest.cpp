@@ -181,6 +181,9 @@ TEST(Angles, shortest_angular_distance)
   EXPECT_NEAR(M_PI/2, shortest_angular_distance(9*M_PI/2, M_PI), epsilon);
   EXPECT_NEAR(M_PI/2, shortest_angular_distance(-3*M_PI/2, M_PI), epsilon);
 
+  // Backside wrapping
+  EXPECT_NEAR(-M_PI/2, shortest_angular_distance(-3*M_PI/4, 3*M_PI/4), epsilon);
+  EXPECT_NEAR(M_PI/2, shortest_angular_distance(3*M_PI/4, -3*M_PI/4), epsilon);
 }
 
 TEST(Angles, two_pi_complement)
