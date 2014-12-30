@@ -2,8 +2,8 @@
 Changelog for package angles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.9.10 (2014-12-29)
+-------------------
 * Export architecture_independent flag in package.xml
 * Simply and improve performance of shortest_angular_distance(). adding two unit test cases
 * check for CATKIN_ENABLE_TESTING
