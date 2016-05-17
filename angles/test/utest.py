@@ -15,7 +15,7 @@
 #     copyright notice, this list of conditions and the following
 #     disclaimer in the documentation and/or other materials provided
 #     with the distribution.
-#   * Neither the name of the Willow Garage nor the names of its
+#   * Neither the name of the Bossa Nova Robotics nor the names of its
 #     contributors may be used to endorse or promote products derived
 #     from this software without specific prior written permission.
 #
@@ -32,7 +32,8 @@
 #  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 #  POSSIBILITY OF SUCH DAMAGE.
 #********************************************************************/
-from angles import *
+from angles import normalize_angle_positive, normalize_angle, shortest_angular_distance, two_pi_complement, shortest_angular_distance_with_limits
+from angles import _find_min_max_delta
 import sys
 import unittest
 from math import pi, fabs
@@ -195,81 +196,81 @@ class TestAngles(unittest.TestCase):
     def test_find_min_max_delta(self):
          epsilon = 1e-9
          # Straight forward full range
-         flag, min_delta, max_delta = find_min_max_delta( 0, -pi, pi)
+         flag, min_delta, max_delta = _find_min_max_delta( 0, -pi, pi)
          self.assertTrue(flag)
          self.assertAlmostEqual(min_delta, -pi)
          self.assertAlmostEqual(max_delta, pi)
 
          # pi/2 Full Range
-         flag, min_delta, max_delta = find_min_max_delta( pi/2, -pi, pi)
+         flag, min_delta, max_delta = _find_min_max_delta( pi/2, -pi, pi)
          self.assertTrue(flag)
          self.assertAlmostEqual(min_delta, -3*pi/2)
          self.assertAlmostEqual(max_delta, pi/2)
 
          # -pi/2 Full range
-         flag, min_delta, max_delta = find_min_max_delta( -pi/2, -pi, pi)
+         flag, min_delta, max_delta = _find_min_max_delta( -pi/2, -pi, pi)
          self.assertTrue(flag)
          self.assertAlmostEqual(min_delta, -pi/2)
          self.assertAlmostEqual(max_delta, 3*pi/2)
 
          # Straight forward partial range
-         flag, min_delta, max_delta = find_min_max_delta( 0, -pi/2, pi/2)
+         flag, min_delta, max_delta = _find_min_max_delta( 0, -pi/2, pi/2)
          self.assertTrue(flag)
          self.assertAlmostEqual(min_delta, -pi/2)
          self.assertAlmostEqual(max_delta, pi/2)
 
          # pi/4 Partial Range
-         flag, min_delta, max_delta = find_min_max_delta( pi/4, -pi/2, pi/2)
+         flag, min_delta, max_delta = _find_min_max_delta( pi/4, -pi/2, pi/2)
          self.assertTrue(flag)
          self.assertAlmostEqual(min_delta, -3*pi/4)
          self.assertAlmostEqual(max_delta, pi/4)
 
          # -pi/4 Partial Range
-         flag, min_delta, max_delta = find_min_max_delta( -pi/4, -pi/2, pi/2)
+         flag, min_delta, max_delta = _find_min_max_delta( -pi/4, -pi/2, pi/2)
          self.assertTrue(flag)
          self.assertAlmostEqual(min_delta, -pi/4)
          self.assertAlmostEqual(max_delta, 3*pi/4)
 
          # bump stop negative full range
-         flag, min_delta, max_delta = find_min_max_delta( -pi, -pi, pi)
+         flag, min_delta, max_delta = _find_min_max_delta( -pi, -pi, pi)
          self.assertTrue(flag)
          self.assertTrue((fabs(min_delta) <= epsilon and fabs(max_delta - 2*pi) <= epsilon) or (fabs(min_delta+2*pi) <= epsilon and fabs(max_delta) <= epsilon))
          self.assertAlmostEqual(min_delta, 0.0)
          self.assertAlmostEqual(max_delta, 2*pi)
 
-         flag, min_delta, max_delta = find_min_max_delta(-0.25,0.25,-0.25)
+         flag, min_delta, max_delta = _find_min_max_delta(-0.25,0.25,-0.25)
          self.assertTrue(flag)
          self.assertAlmostEqual(min_delta, -2*pi+0.5)
          self.assertAlmostEqual(max_delta, 0.0)
 
          # bump stop positive full range
-         flag, min_delta, max_delta = find_min_max_delta( pi-epsilon, -pi, pi)
+         flag, min_delta, max_delta = _find_min_max_delta( pi-epsilon, -pi, pi)
          self.assertTrue(flag)
          #self.assertTrue((fabs(min_delta) <= epsilon and fabs(max_delta - 2*pi) <= epsilon) or (fabs(min_delta+2*pi) <= epsilon and fabs(max_delta) <= epsilon))
          self.assertAlmostEqual(min_delta, -2*pi+epsilon)
          self.assertAlmostEqual(max_delta, epsilon)
 
          # bump stop negative partial range
-         flag, min_delta, max_delta = find_min_max_delta( -pi, -pi, pi)
+         flag, min_delta, max_delta = _find_min_max_delta( -pi, -pi, pi)
          self.assertTrue(flag)
          self.assertAlmostEqual(min_delta, 0)
          self.assertAlmostEqual(max_delta, 2*pi)
 
          # bump stop positive partial range
-         flag, min_delta, max_delta = find_min_max_delta( -pi/2, -pi/2, pi/2)
+         flag, min_delta, max_delta = _find_min_max_delta( -pi/2, -pi/2, pi/2)
          self.assertTrue(flag)
          self.assertAlmostEqual(min_delta, 0.0)
          self.assertAlmostEqual(max_delta, pi)
 
          #Test out of range negative
-         flag, min_delta, max_delta = find_min_max_delta( -pi, -pi/2, pi/2)
+         flag, min_delta, max_delta = _find_min_max_delta( -pi, -pi/2, pi/2)
          self.assertFalse(flag)
          #Test out of range postive
-         flag, min_delta, max_delta = find_min_max_delta( pi, -pi/2, pi/2)
+         flag, min_delta, max_delta = _find_min_max_delta( pi, -pi/2, pi/2)
          self.assertFalse(flag)
 
          # pi/4 Partial Range
-         flag, min_delta, max_delta = find_min_max_delta( 3*pi/4, pi/2, -pi/2)
+         flag, min_delta, max_delta = _find_min_max_delta( 3*pi/4, pi/2, -pi/2)
          self.assertTrue(flag)
          self.assertAlmostEqual(min_delta, -pi/4)
          self.assertAlmostEqual(max_delta, 3*pi/4)
