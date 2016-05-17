@@ -32,7 +32,8 @@
 #  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 #  POSSIBILITY OF SUCH DAMAGE.
 #********************************************************************/
-from angles import *
+from angles import normalize_angle_positive, normalize_angle, shortest_angular_distance, two_pi_complement, shortest_angular_distance_with_limits
+from angles import _find_min_max_delta
 import sys
 import unittest
 from math import pi, fabs
