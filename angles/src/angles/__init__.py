@@ -14,7 +14,7 @@
 #     copyright notice, this list of conditions and the following
 #     disclaimer in the documentation and/or other materials provided
 #     with the distribution.
-#   * Neither the name of the Willow Garage nor the names of its
+#   * Neither the name of the Bossa Nova Robotics nor the names of its
 #     contributors may be used to endorse or promote products derived
 #     from this software without specific prior written permission.
 #
@@ -72,7 +72,7 @@ def two_pi_complement(angle):
 
     return 2*pi
 
-def find_min_max_delta(from_angle, left_limit, right_limit):
+def _find_min_max_delta(from_angle, left_limit, right_limit):
     """ This function is only intended for internal use and not intended for external use. 
         If you do use it, read the documentation very carefully. 
         
@@ -142,7 +142,7 @@ def shortest_angular_distance_with_limits(from_angle, to_angle, left_limit, righ
     max_delta = 2*pi
     min_delta_to = -2*pi
     max_delta_to = 2*pi
-    flag, min_delta, max_delta = find_min_max_delta(from_angle, left_limit, right_limit)
+    flag, min_delta, max_delta = _find_min_max_delta(from_angle, left_limit, right_limit)
     delta = shortest_angular_distance(from_angle,to_angle)
     delta_mod_2pi  = two_pi_complement(delta)
 
@@ -152,7 +152,7 @@ def shortest_angular_distance_with_limits(from_angle, to_angle, left_limit, righ
         elif delta_mod_2pi >= min_delta and delta_mod_2pi <= max_delta:
           return True, delta_mod_2pi
         else: #to position is outside the limits
-            flag, min_delta_to, max_delta_to = find_min_max_delta(to_angle,left_limit,right_limit)
+            flag, min_delta_to, max_delta_to = _find_min_max_delta(to_angle,left_limit,right_limit)
             if fabs(min_delta_to) < fabs(max_delta_to):
                 shortest_angle = max(delta, delta_mod_2pi)
             elif fabs(min_delta_to) > fabs(max_delta_to):
@@ -164,7 +164,7 @@ def shortest_angular_distance_with_limits(from_angle, to_angle, left_limit, righ
                     shortest_angle = delta_mod_2pi
             return False, shortest_angle
     else: # from position is outside the limits
-        flag, min_delta_to, max_delta_to = find_min_max_delta(to_angle,left_limit,right_limit)
+        flag, min_delta_to, max_delta_to = _find_min_max_delta(to_angle,left_limit,right_limit)
 
         if fabs(min_delta) < fabs(max_delta):
             shortest_angle = min(delta,delta_mod_2pi)
