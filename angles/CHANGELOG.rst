@@ -2,8 +2,8 @@
 Changelog for package angles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.9.11 (2017-04-14)
+-------------------
 * Add a python implementation of angles
 * Do not use catkin_add_gtest if CATKIN_ENABLE_TESTING
 * Contributors: David V. Lu, David V. Lu!!, Ryohei Ueda
