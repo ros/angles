@@ -2,6 +2,12 @@
 Changelog for package angles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add a python implementation of angles
+* Do not use catkin_add_gtest if CATKIN_ENABLE_TESTING
+* Contributors: David V. Lu, David V. Lu!!, Ryohei Ueda
+
 1.9.10 (2014-12-29)
 -------------------
 * Export architecture_independent flag in package.xml
