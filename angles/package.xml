@@ -1,4 +1,6 @@
-<package>
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="2">
   <name>angles</name>
   <version>1.9.11</version>
   <description>This package provides a set of simple math utilities to work
@@ -16,10 +18,9 @@
 
   <url>http://wiki.ros.org/angles</url>
 
-  <buildtool_depend version_gte="0.5.68">catkin</buildtool_depend>
-  <test_depend>rosunit</test_depend>
+  <buildtool_depend>ament_cmake</buildtool_depend>
 
   <export>
-    <architecture_independent/>
+    <build_type>ament_cmake</build_type>
   </export>
 </package>
