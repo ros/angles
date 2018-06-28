@@ -2,8 +2,8 @@
 Changelog for package angles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.12.0 (2018-06-28)
+-------------------
 * update for ament and ros2 (`#12 <https://github.com/ros/angles/issues/12>`_)
 * Small documentation updates.
 * enable for win10 ros2
