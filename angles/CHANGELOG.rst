@@ -2,6 +2,13 @@
 Changelog for package angles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* update for ament and ros2 (`#12 <https://github.com/ros/angles/issues/12>`_)
+* Small documentation updates.
+* enable for win10 ros2
+* Contributors: Brian Fjeldstad, Jonathan Binney, Tully Foote
+
 1.9.11 (2017-04-14)
 -------------------
 * Add a python implementation of angles
