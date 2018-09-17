@@ -19,4 +19,6 @@ install(DIRECTORY include/${PROJECT_NAME}/
 
 include_directories(include)
 
+ament_export_include_directories(include)
+
 ament_package()
