@@ -2,6 +2,14 @@
 Changelog for package angles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Adding export lines to CMakeLists.txt (`#14 <https://github.com/ros/angles/issues/14>`_)
+  * Adding export lines to CMakeLists.txt
+  This is needed for dependent packages to pick up the include
+  directory
+* Contributors: Carl Delsey
+
 1.12.0 (2018-06-28)
 -------------------
 * update for ament and ros2 (`#12 <https://github.com/ros/angles/issues/12>`_)
