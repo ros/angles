@@ -211,8 +211,6 @@ namespace angles
    * Finally, note that the call `shortest_angular_distance_with_large_limits(0, 10.5*M_PI, -2*M_PI, 0.1*M_PI, shortest_angle)` will also return `true`.
    * However, `shortest_angle` in this case will be `-1.5*M_PI`.
    *
-   * Note that you do not need to call this function directly: `shortest_angular_distance_with_limits` will call it if the given limits are "large".
-   *
    * \return true if `left_limit < right_limit` and if "from" and "from+shortest_angle" positions are within the valid interval, false otherwise.
    * \param from - "from" angle.
    * \param to - "to" angle.
@@ -289,13 +287,6 @@ namespace angles
    */
   static inline bool shortest_angular_distance_with_limits(double from, double to, double left_limit, double right_limit, double &shortest_angle)
   {
-
-    // If either left_limit or right_limit is outside the "standard" unit circle,
-    // call shortest_angular_distance_with_large_limits instead
-    if(std::fabs(left_limit) > M_PI || std::fabs(right_limit) > M_PI)
-    {
-      return shortest_angular_distance_with_large_limits(from, to, left_limit, right_limit, shortest_angle);
-    }
 
     double min_delta = -2*M_PI;
     double max_delta = 2*M_PI;
