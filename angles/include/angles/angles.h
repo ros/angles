@@ -222,7 +222,7 @@ namespace angles
    */
   static inline bool shortest_angular_distance_with_large_limits(double from, double to, double left_limit, double right_limit, double &shortest_angle)
   {
-    // Shortes steps in the two directions
+    // Shortest steps in the two directions
     double delta = shortest_angular_distance(from, to);
     double delta_2pi = two_pi_complement(delta);
 
