@@ -165,7 +165,7 @@ TEST(Angles, normalize_angle_positive)
  EXPECT_NEAR(M_PI/2, normalize_angle_positive(5*M_PI/2), epsilon);
  EXPECT_NEAR(M_PI/2, normalize_angle_positive(9*M_PI/2), epsilon);
  EXPECT_NEAR(M_PI/2, normalize_angle_positive(-3*M_PI/2), epsilon);
-
+ 
 }
 
 
