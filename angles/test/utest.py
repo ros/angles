@@ -32,7 +32,7 @@
 #  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 #  POSSIBILITY OF SUCH DAMAGE.
 #********************************************************************/
-from angles import normalize_angle_positive, normalize_angle, shortest_angular_distance, two_pi_complement, shortest_angular_distance_with_limits
+from angles import normalize_angle_positive, normalize_angle, shortest_angular_distance, two_pi_complement, shortest_angular_distance_with_limits, shortest_angular_distance_with_large_limits
 from angles import _find_min_max_delta
 import sys
 import unittest
@@ -106,6 +106,34 @@ class TestAngles(unittest.TestCase):
         result, shortest_angle = shortest_angular_distance_with_limits(-pi, pi,-pi,pi)
         self.assertTrue(result)
         self.assertAlmostEqual(shortest_angle,0.0)
+    
+    def test_shortestDistanceWithLargeLimits(self):
+        # 'delta' is valid
+        result, shortest_angle = shortest_angular_distance_with_large_limits(0, 10.5*pi, -2*pi, 2*pi)
+        self.assertTrue(result)
+        self.assertAlmostEqual(shortest_angle, 0.5*pi)
+
+        # 'delta' is not valid, but 'delta_2pi' is
+        result, shortest_angle = shortest_angular_distance_with_large_limits(0, 10.5*pi, -2*pi, 0.1*pi)
+        self.assertTrue(result)
+        self.assertAlmostEqual(shortest_angle, -1.5*pi)
+
+        # neither 'delta' nor 'delta_2pi' are valid
+        result, shortest_angle = shortest_angular_distance_with_large_limits(2*pi, pi, 2*pi-0.1, 2*pi+0.1)
+        self.assertFalse(result)
+
+        # start position outside limits
+        result, shortest_angle = shortest_angular_distance_with_large_limits(10.5*pi, 0, -2*pi, 2*pi)
+        self.assertFalse(result)
+
+        # invalid limits (lower > upper)
+        result, shortest_angle = shortest_angular_distance_with_large_limits(0, 0.1, 2*pi, -2*pi)
+        self.assertFalse(result)
+
+        # specific test case
+        result, shortest_angle = shortest_angular_distance_with_large_limits(0.999507, 1.0, -20*pi, 20*pi)
+        self.assertTrue(result)
+        self.assertAlmostEqual(shortest_angle, 0.000493)
 
     def test_normalize_angle_positive(self):
         self.assertAlmostEqual(0, normalize_angle_positive(0))
