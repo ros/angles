@@ -73,6 +73,41 @@ TEST(Angles, shortestDistanceWithLimits){
 
 }
 
+
+TEST(Angles, shortestDistanceWithLargeLimits)
+{
+  double shortest_angle;
+  bool result;
+
+  // 'delta' is valid
+  result = angles::shortest_angular_distance_with_large_limits(0, 10.5*M_PI, -2*M_PI, 2*M_PI, shortest_angle);
+  EXPECT_TRUE(result);
+  EXPECT_NEAR(shortest_angle, 0.5*M_PI, 1e-6);
+
+  // 'delta' is not valid, but 'delta_2pi' is
+  result = angles::shortest_angular_distance_with_large_limits(0, 10.5*M_PI, -2*M_PI, 0.1*M_PI, shortest_angle);
+  EXPECT_TRUE(result);
+  EXPECT_NEAR(shortest_angle, -1.5*M_PI, 1e-6);
+
+  // neither 'delta' nor 'delta_2pi' are valid
+  result = angles::shortest_angular_distance_with_large_limits(2*M_PI, M_PI, 2*M_PI-0.1, 2*M_PI+0.1, shortest_angle);
+  EXPECT_FALSE(result);
+
+  // start position outside limits
+  result = angles::shortest_angular_distance_with_large_limits(10.5*M_PI, 0, -2*M_PI, 2*M_PI, shortest_angle);
+  EXPECT_FALSE(result);
+
+  // invalid limits (lower > upper)
+  result = angles::shortest_angular_distance_with_large_limits(0, 0.1, 2*M_PI, -2*M_PI, shortest_angle);
+  EXPECT_FALSE(result);
+
+  // specific test case
+  result = angles::shortest_angular_distance_with_large_limits(0.999507, 1.0, -20*M_PI, 20*M_PI, shortest_angle);
+  EXPECT_TRUE(result);
+  EXPECT_NEAR(shortest_angle, 0.000493, 1e-6);
+}
+
+
 TEST(Angles, from_degrees)
 {
   double epsilon = 1e-9;
