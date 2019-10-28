@@ -177,3 +177,62 @@ def shortest_angular_distance_with_limits(from_angle, to_angle, left_limit, righ
                 shortest_angle = delta_mod_2pi
         return False, shortest_angle
 
+def shortest_angular_distance_with_large_limits(from_angle, to_angle, left_limit, right_limit):
+    """ Returns the delta from `from_angle` to `to_angle`, making sure it does not violate limits specified by `left_limit` and `right_limit`.
+        This function is similar to `shortest_angular_distance_with_limits()`, with the main difference that it accepts limits outside the `[-M_PI, M_PI]` range.
+        Even if this is quite uncommon, one could indeed consider revolute joints with large rotation limits, e.g., in the range `[-2*M_PI, 2*M_PI]`.
+
+        In this case, a strict requirement is to have `left_limit` smaller than `right_limit`.
+        Note also that `from_angle` must lie inside the valid range, while `to_angle` does not need to.
+        In fact, this function will evaluate the shortest (valid) angle `shortest_angle` so that `from_angle+shortest_angle` equals `to_angle` up to an integer multiple of `2*M_PI`.
+        As an example, a call to `shortest_angular_distance_with_large_limits(0, 10.5*M_PI, -2*M_PI, 2*M_PI)` will return `true`, with `shortest_angle=0.5*M_PI`.
+        This is because `from_angle` and `from_angle+shortest_angle` are both inside the limits, and `fmod(to_angle+shortest_angle, 2*M_PI)` equals `fmod(to_angle, 2*M_PI)`.
+        On the other hand, `shortest_angular_distance_with_large_limits(10.5*M_PI, 0, -2*M_PI, 2*M_PI)` will return false, since `from_angle` is not in the valid range.
+        Finally, note that the call `shortest_angular_distance_with_large_limits(0, 10.5*M_PI, -2*M_PI, 0.1*M_PI)` will also return `true`.
+        However, `shortest_angle` in this case will be `-1.5*M_PI`.
+
+        \return valid_flag, shortest_angle - valid_flag will be true if `left_limit < right_limit` and if "from_angle" and "from_angle+shortest_angle" positions are within the valid interval, false otherwise.
+        \param left_limit - left limit of valid interval, must be smaller than right_limit.
+        \param right_limit - right limit of valid interval, must be greater than left_limit.
+    """
+    # Shortest steps in the two directions
+    delta = shortest_angular_distance(from_angle, to_angle)
+    delta_2pi = two_pi_complement(delta)
+
+    # "sort" distances so that delta is shorter than delta_2pi
+    if fabs(delta) > fabs(delta_2pi):
+        delta, delta_2pi = delta_2pi, delta
+
+    if left_limit > right_limit:
+        # If limits are something like [PI/2 , -PI/2] it actually means that we
+        # want rotations to be in the interval [-PI,PI/2] U [PI/2,PI], ie, the
+        # half unit circle not containing the 0. This is already gracefully
+        # handled by shortest_angular_distance_with_limits, and therefore this
+        # function should not be called at all. However, if one has limits that
+        # are larger than PI, the same rationale behind shortest_angular_distance_with_limits
+        # does not hold, ie, M_PI+x should not be directly equal to -M_PI+x.
+        # In this case, the correct way of getting the shortest solution is to
+        # properly set the limits, eg, by saying that the interval is either
+        # [PI/2, 3*PI/2] or [-3*M_PI/2, -M_PI/2]. For this reason, here we
+        # return false by default.
+        return False, delta
+    
+
+    # Check in which direction we should turn (clockwise or counter-clockwise).
+
+    # start by trying with the shortest angle (delta).
+    to2 = from_angle + delta
+    if left_limit <= to2 and to2 <= right_limit:
+        # we can move in this direction: return success if the "from" angle is inside limits
+        valid_flag = left_limit <= from_angle and from_angle <= right_limit
+        return valid_flag, delta
+
+    # delta is not ok, try to move in the other direction (using its complement)
+    to2 = from_angle + delta_2pi
+    if left_limit <= to2 and to2 <= right_limit:
+        # we can move in this direction: return success if the "from" angle is inside limits
+        valid_flag = left_limit <= from_angle and from_angle <= right_limit
+        return valid_flag, delta_2pi
+
+    # nothing works: we always go outside limits
+    return False, delta
