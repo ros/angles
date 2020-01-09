@@ -2,8 +2,8 @@
 Changelog for package angles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.9.12 (2020-01-08)
+-------------------
 * Added support for "large limits" (`#16 <https://github.com/ros/angles/issues/16>`_)
 * Small documentation updates.
 * Contributors: Franco Fusco, Tully Foote
