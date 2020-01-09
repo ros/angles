@@ -2,6 +2,13 @@
 Changelog for package angles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Added support for "large limits" (`#16 <https://github.com/ros/angles/issues/16>`_)
+  * Added support for "large limits"
+  * shortest_angle_with_large_limits in python
+* Contributors: Franco Fusco
+
 1.12.1 (2018-11-20)
 -------------------
 * Adding export lines to CMakeLists.txt (`#14 <https://github.com/ros/angles/issues/14>`_)
