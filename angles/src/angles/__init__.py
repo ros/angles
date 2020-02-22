@@ -34,10 +34,15 @@
 
 from math import fmod, pi, fabs
 
+def normalize_angle_positive(angle):
+    """ Normalizes the angle to be 0 to 2*pi
+        It takes and returns radians. """
+    return fmod(fmod(angle, 2.0*pi) + 2.0*pi, 2.0*pi)
+
 def normalize_angle(angle):
     """ Normalizes the angle to be -pi to +pi
         It takes and returns radians."""
-    return (angle + pi) % (2*pi) - pi
+    return (angle + pi) % (2.0*pi) - pi
 
 def shortest_angular_distance(from_angle, to_angle):
     """ Given 2 angles, this returns the shortest angular
