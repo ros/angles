@@ -67,7 +67,7 @@ namespace angles
    */
   static inline double normalize_angle_positive(double angle)
   {
-    const double result = fmod(angle, 2*M_PI);
+    const double result = fmod(angle, 2.0*M_PI);
     if(result < 0) return result + 2.0*M_PI;
     return result;
   }
@@ -82,9 +82,9 @@ namespace angles
    */
   static inline double normalize_angle(double angle)
   {
-    const double result = fmod(angle + M_PI, 2*M_PI);
-    // if(result < 0) return result + M_PI; // Fits the python refactor
-    if(result <= 0) return result + M_PI;
+    const double result = fmod(angle + M_PI, 2.0*M_PI);
+    // if(result < 0.0) return result + M_PI; // Fits the python refactor
+    if(result <= 0.0) return result + M_PI;
     return result - M_PI;
   }
 
