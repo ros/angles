@@ -37,7 +37,7 @@ from math import fmod, pi, fabs
 def normalize_angle_positive(angle):
     """ Normalizes the angle to be 0 to 2*pi
         It takes and returns radians. """
-    return fmod(fmod(angle, 2.0*pi) + 2.0*pi, 2.0*pi)
+    return angle % (2.0*pi)
 
 def normalize_angle(angle):
     """ Normalizes the angle to be -pi to +pi
