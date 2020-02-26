@@ -42,7 +42,10 @@ def normalize_angle_positive(angle):
 def normalize_angle(angle):
     """ Normalizes the angle to be -pi to +pi
         It takes and returns radians."""
-    return (angle + pi) % (2.0*pi) - pi
+    a = normalize_angle_positive(angle)
+    if a > pi:
+        a -= 2.0 *pi
+    return a
 
 def shortest_angular_distance(from_angle, to_angle):
     """ Given 2 angles, this returns the shortest angular
