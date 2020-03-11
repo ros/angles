@@ -2,8 +2,8 @@
 Changelog for package angles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.12.3 (2020-03-11)
+-------------------
 * Update the angle normalization function to a simpler implementation (`#19 <https://github.com/ros/angles/issues/19>`_) (`#21 <https://github.com/ros/angles/issues/21>`_)
   * Update the angle normalization function for a simpler alternative
   * Simplify 2*pi angle wrapping.
