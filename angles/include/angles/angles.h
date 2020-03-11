@@ -67,7 +67,9 @@ namespace angles
    */
   static inline double normalize_angle_positive(double angle)
   {
-    return fmod(fmod(angle, 2.0*M_PI) + 2.0*M_PI, 2.0*M_PI);
+    const double result = fmod(angle, 2.0*M_PI);
+    if(result < 0) return result + 2.0*M_PI;
+    return result;
   }
 
 
@@ -80,10 +82,9 @@ namespace angles
    */
   static inline double normalize_angle(double angle)
   {
-    double a = normalize_angle_positive(angle);
-    if (a > M_PI)
-      a -= 2.0 *M_PI;
-    return a;
+    const double result = fmod(angle + M_PI, 2.0*M_PI);
+    if(result <= 0.0) return result + M_PI;
+    return result - M_PI;
   }
 
 
