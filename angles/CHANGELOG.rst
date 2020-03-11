@@ -2,6 +2,15 @@
 Changelog for package angles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Update the angle normalization function to a simpler implementation (`#19 <https://github.com/ros/angles/issues/19>`_)
+  * Update the angle normalization function for a simpler alternative
+  * Simplify 2*pi angle wrapping.
+  * Simplify/fasten the C++ implementation of angle normalization (removes one fmod call)
+* Bump CMake version to avoid CMP0048 warning (`#20 <https://github.com/ros/angles/issues/20>`_)
+* Contributors: Alexis Paques, Shane Loretz
+
 1.9.12 (2020-01-08)
 -------------------
 * Added support for "large limits" (`#16 <https://github.com/ros/angles/issues/16>`_)
