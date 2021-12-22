@@ -13,12 +13,13 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 
-install(DIRECTORY include/${PROJECT_NAME}/
-        DESTINATION include/${PROJECT_NAME}/
-        FILES_MATCHING PATTERN "*.h")
+add_library(angles INTERFACE)
+target_link_libraries(angles INTERFACE
+  "$<INSTALL_INTERFACE:install/angles>")
+install(TARGETS angles EXPORT export_angles)
 
-include_directories(include)
+ament_export_targets(export_angles)
 
-ament_export_include_directories(include)
+install(DIRECTORY include/ DESTINATION include/angles)
 
 ament_package()
