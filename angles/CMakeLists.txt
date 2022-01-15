@@ -20,6 +20,6 @@ install(TARGETS angles EXPORT export_angles)
 
 ament_export_targets(export_angles)
 
-install(DIRECTORY include/ DESTINATION include/angles)
+install(DIRECTORY include/ DESTINATION include)
 
 ament_package()
