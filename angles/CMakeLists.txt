@@ -18,6 +18,9 @@ target_include_directories(angles INTERFACE
   "$<INSTALL_INTERFACE:include/angles>")
 install(TARGETS angles EXPORT export_angles)
 
+# TODO(sloretz) remove when old-style CMake interface is no longer supported
+ament_export_include_directories("include/angles")
+
 ament_export_targets(export_angles)
 
 install(DIRECTORY include/ DESTINATION include/angles)
