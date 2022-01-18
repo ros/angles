@@ -2,6 +2,12 @@
 Changelog for package angles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.13.0 (2022-01-18)
+-------------------
+* Export ament_cmake buildtool dependency (`#32 <https://github.com/ros/angles/issues/32>`_)
+* Install includes to include/angles and add modern CMake target (`#28 <https://github.com/ros/angles/issues/28>`_)
+* Contributors: Shane Loretz
+
 1.12.4 (2021-03-18)
 -------------------
 * Upgrade to setuptools (`#23 <https://github.com/ros/angles/issues/23>`_)
