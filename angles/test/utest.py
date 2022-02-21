@@ -304,5 +304,4 @@ class TestAngles(unittest.TestCase):
          self.assertAlmostEqual(max_delta, 3*pi/4)
 
 if __name__ == '__main__':
-    import rosunit
-    rosunit.unitrun('angles', 'test_python_angles', TestAngles)
+    unittest.main()

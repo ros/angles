@@ -25,4 +25,6 @@ ament_export_targets(export_angles)
 
 install(DIRECTORY include/ DESTINATION include/angles)
 
+ament_python_install_package(${PROJECT_NAME})
+
 ament_package()
