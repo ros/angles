@@ -1,11 +1,20 @@
-#!/usr/bin/env python
-
 from setuptools import setup
-from catkin_pkg.python_setup import generate_distutils_setup
 
-package_info = generate_distutils_setup(
-    packages=['angles'],
-    package_dir={'': 'src'}
+package_name = 'angles'
+
+setup(
+    name=package_name,
+    version='1.13.0',
+    package_dir={'': 'src'},
+    packages=[package_name],
+    data_files=[
+        ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
+        ('share/' + package_name, ['package.xml']),
+    ],
+    install_requires=['setuptools'],
+    url='http://wiki.ros.org/angles',
+    license='BSD',
+    author='John Hsu',
+    author_email='hsu@osrfoundation.org',
+    description='Simple math utilities to work with angles',
 )
-
-setup(**package_info)

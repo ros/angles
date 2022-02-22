@@ -21,4 +21,6 @@ include_directories(include)
 
 ament_export_include_directories(include)
 
+ament_python_install_package(${PROJECT_NAME})
+
 ament_package()
