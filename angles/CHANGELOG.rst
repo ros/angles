@@ -2,8 +2,8 @@
 Changelog for package angles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.15.0 (2022-07-12)
+-------------------
 * Correct versions
 * Contributors: Geoffrey Biggs
 
