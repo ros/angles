@@ -4,7 +4,7 @@ package_name = 'angles'
 
 setup(
     name=package_name,
-    version='1.12.5',
+    version='1.12.6',
     package_dir={'': 'src'},
     packages=[package_name],
     data_files=[

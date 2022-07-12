@@ -2,8 +2,8 @@
 Changelog for package angles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.12.6 (2022-07-12)
+-------------------
 * Correct version in Python setup.py
 * Contributors: Geoffrey Biggs
 

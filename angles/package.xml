@@ -4,7 +4,7 @@
   schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>angles</name>
-  <version>1.12.5</version>
+  <version>1.12.6</version>
   <description>This package provides a set of simple math utilities to work
         with angles. The utilities cover simple things like
         normalizing an angle and conversion between degrees and
