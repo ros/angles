@@ -2,6 +2,11 @@
 Changelog for package angles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Correct version in Python setup.py
+* Contributors: Geoffrey Biggs
+
 1.12.5 (2022-07-10)
 -------------------
 * ROS 2 Python Port (`#37 <https://github.com/ros/angles/issues/37>`_)
