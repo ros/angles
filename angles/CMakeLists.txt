@@ -16,6 +16,20 @@ find_package(ament_cmake REQUIRED)
 add_library(angles INTERFACE)
 target_include_directories(angles INTERFACE
   "$<INSTALL_INTERFACE:include/angles>")
+
+if(BUILD_TESTING)
+  find_package(ament_cmake_gtest REQUIRED)
+  ament_add_gtest(${PROJECT_NAME}_utest test/utest.cpp)
+  target_include_directories(${PROJECT_NAME}_utest PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+  )
+  target_link_libraries(${PROJECT_NAME}_utest angles)
+
+  find_package(ament_cmake_pytest REQUIRED)
+  ament_add_pytest_test(utest test/utest.py)
+endif()
+
 install(TARGETS angles EXPORT export_angles)
 
 # TODO(sloretz) remove when old-style CMake interface is no longer supported
