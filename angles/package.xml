@@ -14,11 +14,12 @@
         by joint limits, this package is what you need. The code in
         this package is stable and well tested. There are no plans for
         major changes in the near future.</description>
-  <author email="hsu@osrfoundation.org">John Hsu</author>
   <maintainer email="tfoote@osrfoundation.org">Tully Foote</maintainer>
+  <maintainer email="davidvlu@gmail.com">David V. Lu!!</maintainer>
   <license>BSD</license>
 
   <url>http://wiki.ros.org/angles</url>
+  <author email="hsu@osrfoundation.org">John Hsu</author>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
   <buildtool_depend>ament_cmake_python</buildtool_depend>
