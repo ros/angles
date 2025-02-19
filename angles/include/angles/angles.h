@@ -35,7 +35,10 @@
 #ifndef GEOMETRY_ANGLES_UTILS_H
 #define GEOMETRY_ANGLES_UTILS_H
 
+#ifndef _USE_MATH_DEFINES
 #define _USE_MATH_DEFINES
+#endif
+
 #include <algorithm>
 #include <cmath>
 

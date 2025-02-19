@@ -16,6 +16,9 @@ find_package(ament_cmake REQUIRED)
 add_library(angles INTERFACE)
 target_include_directories(angles INTERFACE
   "$<INSTALL_INTERFACE:include/angles>")
+if(WIN32)
+  target_compile_definitions(angles INTERFACE _USE_MATH_DEFINES)
+endif()
 
 if(BUILD_TESTING)
   find_package(ament_cmake_gtest REQUIRED)
