@@ -2,8 +2,8 @@
 Changelog for package angles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.9.14 (2025-04-10)
+-------------------
 * Update package maintainers (`#27 <https://github.com/ros/angles/issues/27>`_)
 * Noetic port (`#22 <https://github.com/ros/angles/issues/22>`_)
 * Contributors: Geoffrey Biggs, Sean Yen
