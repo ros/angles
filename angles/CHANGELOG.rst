@@ -2,6 +2,13 @@
 Changelog for package angles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Ensure that M_PI is defined in any downstream compilation unit in Windows (`#44 <https://github.com/ros/angles/issues/44>`_)
+* Enable Testing (`#39 <https://github.com/ros/angles/issues/39>`_)
+* New Maintainer (`#40 <https://github.com/ros/angles/issues/40>`_)
+* Contributors: David V. Lu!!, Silvio Traversaro
+
 1.16.0 (2022-07-12)
 -------------------
 * Correct versions for version bump
