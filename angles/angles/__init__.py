@@ -57,7 +57,7 @@ def shortest_angular_distance(from_angle, to_angle):
     return normalize_angle(to_angle-from_angle)
 
 def two_pi_complement(angle):
-    """ returns the angle in [-2*pi, 2*pi]  going the other way along the unit circle.
+    r""" returns the angle in [-2*pi, 2*pi]  going the other way along the unit circle.
         \param angle The angle to which you want to turn in the range [-2*pi, 2*pi]
             E.g. two_pi_complement(-pi/4) returns 7_pi/4
                  two_pi_complement(pi/4) returns -7*pi/4
@@ -73,7 +73,7 @@ def two_pi_complement(angle):
     return 2*pi
 
 def _find_min_max_delta(from_angle, left_limit, right_limit):
-    """ This function is only intended for internal use and not intended for external use. 
+    r""" This function is only intended for internal use and not intended for external use. 
         If you do use it, read the documentation very carefully. 
         
         Returns the min and max amount (in radians) that can be moved 
@@ -122,7 +122,7 @@ def _find_min_max_delta(from_angle, left_limit, right_limit):
     return True, delta_min, delta_max
 
 def shortest_angular_distance_with_limits(from_angle, to_angle, left_limit, right_limit):
-    """ Returns the delta from "from_angle" to "to_angle" making sure it does not violate limits specified by left_limit and right_limit.
+    r""" Returns the delta from "from_angle" to "to_angle" making sure it does not violate limits specified by left_limit and right_limit.
         The valid interval of angular positions is [left_limit,right_limit]. E.g., [-0.25,0.25] is a 0.5 radians wide interval that contains 0.
         But [0.25,-0.25] is a 2*pi-0.5 wide interval that contains pi (but not 0).
         The value of shortest_angle is the angular difference between "from" and "to" that lies within the defined valid interval.
@@ -178,7 +178,7 @@ def shortest_angular_distance_with_limits(from_angle, to_angle, left_limit, righ
         return False, shortest_angle
 
 def shortest_angular_distance_with_large_limits(from_angle, to_angle, left_limit, right_limit):
-    """ Returns the delta from `from_angle` to `to_angle`, making sure it does not violate limits specified by `left_limit` and `right_limit`.
+    r""" Returns the delta from `from_angle` to `to_angle`, making sure it does not violate limits specified by `left_limit` and `right_limit`.
         This function is similar to `shortest_angular_distance_with_limits()`, with the main difference that it accepts limits outside the `[-M_PI, M_PI]` range.
         Even if this is quite uncommon, one could indeed consider revolute joints with large rotation limits, e.g., in the range `[-2*M_PI, 2*M_PI]`.
 
